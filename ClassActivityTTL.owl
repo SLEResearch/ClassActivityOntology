@@ -1,0 +1,348 @@
+@prefix : <http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity> .
+
+<http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity> rdf:type owl:Ontology ;
+                                                                   owl:versionIRI <http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity/1.0.0> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#activityWithin
+:activityWithin rdf:type owl:ObjectProperty ;
+                rdfs:domain :Activity ;
+                rdfs:range :CourseActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#assignedFor
+:assignedFor rdf:type owl:ObjectProperty ;
+             rdfs:domain :ActivityGroup ;
+             rdfs:range :CourseActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#carriesItem
+:carriesItem rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :UsingCarriedItem ;
+             rdfs:range :Item .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#generatesPrompt
+:generatesPrompt rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :InstructorPrompting ;
+                 rdfs:range :InstructorPrompt .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasAssignedStation
+:hasAssignedStation rdf:type owl:ObjectProperty ;
+                    rdfs:domain :ActivityGroup ;
+                    rdfs:range :Station .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasMember
+:hasMember rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :ActivityGroup ;
+           rdfs:range :Student .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#isWithinLocation
+:isWithinLocation rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Location ;
+                  rdfs:range :Station .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#measuresQuantity
+:measuresQuantity rdf:type owl:ObjectProperty ;
+                  rdfs:domain :MeasuringCircuitQuantity ;
+                  rdfs:range :CircuitQuantity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#occurredAt
+:occurredAt rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Activity ;
+            rdfs:range :Location .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#performedBy
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Activity ;
+             rdfs:range :Person ;
+             rdfs:comment "performedBy Person" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#performedDuring
+:performedDuring rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:AsymmetricProperty ;
+                 rdfs:domain :IntervalActivity ;
+                 rdfs:range :TimeInterval .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#reportOf
+:reportOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :ReportField ;
+          rdfs:range :CourseActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#reportsCircuitQuantity
+:reportsCircuitQuantity rdf:type owl:ObjectProperty ;
+                        rdfs:domain :ReportField ;
+                        rdfs:range :CircuitQuantity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#scheduledOn
+:scheduledOn rdf:type owl:ObjectProperty ;
+             rdfs:domain :CourseActivity ;
+             rdfs:range :TimeInterval .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#updatesField
+:updatesField rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :ReportingData ;
+              rdfs:range :ReportField .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#usesItemInplace
+:usesItemInplace rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :UsingStaticItem ;
+                 rdfs:range :Item .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain :Activity ;
+                      rdfs:range :Location .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#getsMeasuredValue
+:getsMeasuredValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :MeasuringCircuitQuantity ;
+                   rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasClassActivityDesc
+:hasClassActivityDesc rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :CourseActivity ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Short description of class activity e.g. \"Lab 5\"" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasGroupNumber
+:hasGroupNumber rdf:type owl:DatatypeProperty ;
+                rdfs:domain :ActivityGroup ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasIDNumber
+:hasIDNumber rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Person ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasStartTime
+:hasStartTime rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :TimeInterval ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasStationNum
+:hasStationNum rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Station ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasStopTime
+:hasStopTime rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :TimeInterval ;
+             rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty ;
+         rdfs:domain :CircuitQuantity ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#performedAt
+:performedAt rdf:type owl:DatatypeProperty ;
+             rdfs:domain :InstantActivity ;
+             rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#reportsFieldValue
+:reportsFieldValue rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :ReportingData ;
+                   rdfs:range xsd:double .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Activity
+:Activity rdf:type owl:Class ;
+          rdfs:comment """Activity event; each event has associated specific:
+   performedBy Person
+   a InstantActivity OR a IntervalActivity
+   occuredAt Location
+A new activity is created for each combination of (Person, TimeInstant if InstantActivity OR TimeInteval if Interval Activity, Location)""" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#ActivityGroup
+:ActivityGroup rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#CircuitQuantity
+:CircuitQuantity rdf:type owl:Class ;
+                 rdfs:comment "A circuit quantity that is measured. Individuals are \"current\", \"voltage\", etc." .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#CourseActivity
+:CourseActivity rdf:type owl:Class ;
+                rdfs:comment "A class activity such as \"Lab 5\" or \"Week 1 group discussion\"" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#InstantActivity
+:InstantActivity rdf:type owl:Class ;
+                 rdfs:subClassOf :Activity ;
+                 owl:disjointWith :IntervalActivity ;
+                 rdfs:comment """A type of Activity
+An InstantActivity is associated with specific:
+   performedAt TimeStamp""" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Instructor
+:Instructor rdf:type owl:Class ;
+            rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#InstructorPrompt
+:InstructorPrompt rdf:type owl:Class ;
+                  rdfs:comment "A specific instructor prompt e.g. Prompt1 : \"Turn off power supply\". An individual of this class is \"Prompt1\"" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#InstructorPrompting
+:InstructorPrompting rdf:type owl:Class ;
+                     rdfs:subClassOf :InstantActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#IntervalActivity
+:IntervalActivity rdf:type owl:Class ;
+                  rdfs:subClassOf :Activity ;
+                  rdfs:comment """A type of Activity
+An IntervalActivity is associated with specific:
+   performedDuring TimeInterval (any new Ti,Tj interval is a separate IntervalActivity)""" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Item
+:Item rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Location
+:Location rdf:type owl:Class ;
+          rdfs:comment "An (x,y,z) location coordinate within the classroom" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#MakingCircuitChanges
+:MakingCircuitChanges rdf:type owl:Class ;
+                      rdfs:subClassOf :InstantActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#MeasuringCircuitQuantity
+:MeasuringCircuitQuantity rdf:type owl:Class ;
+                          rdfs:subClassOf :InstantActivity ;
+                          rdfs:comment "The activity of using a multimeter (or other instructions) to measure circuit quantity such as current, voltage or resistance." .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Person
+:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#ReportField
+:ReportField rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#ReportingData
+:ReportingData rdf:type owl:Class ;
+               rdfs:subClassOf :InstantActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Staff
+:Staff rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Station
+:Station rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Student
+:Student rdf:type owl:Class ;
+         rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#Talking
+:Talking rdf:type owl:Class ;
+         rdfs:subClassOf :IntervalActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#TimeInterval
+:TimeInterval rdf:type owl:Class ;
+              rdfs:comment "Specifies a time range (T1, T2) where T1 and T2 are xsd:dataTime" .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#TurningOffCircuitPower
+:TurningOffCircuitPower rdf:type owl:Class ;
+                        rdfs:subClassOf :InstantActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#TurningOnCircuitPower
+:TurningOnCircuitPower rdf:type owl:Class ;
+                       rdfs:subClassOf :InstantActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#UsingCarriedItem
+:UsingCarriedItem rdf:type owl:Class ;
+                  rdfs:subClassOf :IntervalActivity .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#UsingStaticItem
+:UsingStaticItem rdf:type owl:Class ;
+                 rdfs:subClassOf :IntervalActivity .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#InstructorRole
+:InstructorRole rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#StaffRole
+:StaffRole rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gina/ontologies/2022/1/ClassActivity#StudentRole
+:StudentRole rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
